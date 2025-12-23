@@ -1,0 +1,270 @@
+# Plugins Configuration
+# Вдохновлено n3d1117/chatgpt-telegram-bot
+# Конфигурация плагинов бота
+
+plugins:
+  # =========================================================================
+  # CALENDAR PLUGIN
+  # =========================================================================
+  calendar:
+    enabled: true
+    priority: 1
+    name: "📅 Календарь"
+    description: "Управление календарём и событиями"
+    module: "bot.modules.calendar_handler"
+    class: "CalendarPlugin"
+
+    triggers:
+      keywords:
+        - "встреча"
+        - "событие"
+        - "календарь"
+        - "напоминание"
+        - "appointment"
+        - "event"
+        - "calendar"
+      commands:
+        - "/calendar"
+        - "/event"
+        - "/schedule"
+
+    capabilities:
+      - "create_event"
+      - "list_events"
+      - "update_event"
+      - "delete_event"
+      - "search_events"
+
+    settings:
+      default_event_duration: 60  # minutes
+      reminder_before: 15  # minutes
+      max_events_display: 10
+      date_format: "%d.%m.%Y %H:%M"
+
+  # =========================================================================
+  # CONTACTS PLUGIN
+  # =========================================================================
+  contacts:
+    enabled: true
+    priority: 2
+    name: "👥 Контакты"
+    description: "Управление контактами"
+    module: "bot.modules.contacts_handler"
+    class: "ContactsPlugin"
+
+    triggers:
+      keywords:
+        - "контакт"
+        - "телефон"
+        - "email"
+        - "contact"
+        - "phone"
+      commands:
+        - "/contacts"
+        - "/addcontact"
+        - "/findcontact"
+
+    capabilities:
+      - "add_contact"
+      - "search_contact"
+      - "update_contact"
+      - "delete_contact"
+      - "list_contacts"
+
+    settings:
+      max_search_results: 5
+      fuzzy_search: true
+      search_threshold: 0.6
+
+  # =========================================================================
+  # EXCEL PLUGIN
+  # =========================================================================
+  excel:
+    enabled: true
+    priority: 3
+    name: "📊 Excel Аналитик"
+    description: "Анализ Excel файлов"
+    module: "bot.modules.excel_handler"
+    class: "ExcelPlugin"
+
+    triggers:
+      file_extensions:
+        - ".xlsx"
+        - ".xls"
+        - ".csv"
+      keywords:
+        - "excel"
+        - "таблица"
+        - "расходы"
+        - "бюджет"
+        - "аналитика"
+      commands:
+        - "/excel"
+        - "/analyze"
+
+    capabilities:
+      - "read_spreadsheet"
+      - "calculate"
+      - "create_chart"
+      - "pivot_table"
+      - "find_patterns"
+      - "financial_analysis"
+
+    settings:
+      max_file_size: 10485760  # 10 MB in bytes
+      max_rows_process: 10000
+      supported_charts:
+        - "bar"
+        - "line"
+        - "pie"
+        - "scatter"
+      auto_detect_currency: true
+
+  # =========================================================================
+  # MEMORY PLUGIN
+  # =========================================================================
+  memory:
+    enabled: true
+    priority: 4
+    name: "🧠 Память"
+    description: "Долговременная память о пользователе"
+    module: "bot.modules.memory_manager"
+    class: "MemoryPlugin"
+
+    triggers:
+      keywords:
+        - "запомни"
+        - "помни"
+        - "я предпочитаю"
+        - "мне нравится"
+        - "remember"
+        - "I prefer"
+      commands:
+        - "/remember"
+        - "/forget"
+        - "/memory"
+
+    capabilities:
+      - "store_preference"
+      - "recall_preference"
+      - "forget_preference"
+      - "list_memories"
+      - "search_memories"
+
+    settings:
+      max_memories_per_user: 100
+      memory_expiration_days: 365
+      auto_remember: true  # Автоматически запоминать важное
+      memory_confidence_threshold: 0.7
+
+  # =========================================================================
+  # WEB SEARCH PLUGIN (Future)
+  # =========================================================================
+  web_search:
+    enabled: false
+    priority: 5
+    name: "🔍 Веб-поиск"
+    description: "Поиск информации в интернете"
+    module: "bot.modules.web_search"
+    class: "WebSearchPlugin"
+
+    triggers:
+      keywords:
+        - "найди в интернете"
+        - "погода"
+        - "курс валют"
+        - "search"
+        - "weather"
+      commands:
+        - "/search"
+        - "/weather"
+
+    capabilities:
+      - "web_search"
+      - "get_weather"
+      - "get_exchange_rates"
+      - "get_news"
+
+    settings:
+      search_engine: "duckduckgo"
+      max_results: 5
+      weather_api: "openweathermap"
+
+  # =========================================================================
+  # IMAGE ANALYSIS PLUGIN (Future)
+  # =========================================================================
+  image_analysis:
+    enabled: false
+    priority: 6
+    name: "🖼️ Анализ изображений"
+    description: "Анализ и описание изображений"
+    module: "bot.modules.image_analyzer"
+    class: "ImageAnalysisPlugin"
+
+    triggers:
+      file_types:
+        - "photo"
+      commands:
+        - "/analyze_image"
+        - "/describe"
+
+    capabilities:
+      - "describe_image"
+      - "ocr_text"
+      - "detect_objects"
+      - "answer_about_image"
+
+    settings:
+      max_image_size: 5242880  # 5 MB
+      supported_formats:
+        - "jpg"
+        - "jpeg"
+        - "png"
+        - "webp"
+
+  # =========================================================================
+  # VOICE RECOGNITION PLUGIN (Future)
+  # =========================================================================
+  voice_recognition:
+    enabled: false
+    priority: 7
+    name: "🎤 Распознавание голоса"
+    description: "Преобразование голосовых сообщений в текст"
+    module: "bot.modules.voice_handler"
+    class: "VoiceRecognitionPlugin"
+
+    triggers:
+      file_types:
+        - "voice"
+        - "audio"
+      commands:
+        - "/transcribe"
+
+    capabilities:
+      - "transcribe_voice"
+      - "transcribe_audio"
+
+    settings:
+      model: "whisper-1"
+      max_audio_duration: 300  # seconds
+      language: "ru"  # auto-detect if not specified
+
+# =========================================================================
+# GLOBAL PLUGIN SETTINGS
+# =========================================================================
+global_settings:
+  # Plugin loading
+  auto_load: true
+  lazy_load: false
+
+  # Error handling
+  continue_on_error: true
+  log_plugin_errors: true
+
+  # Performance
+  plugin_timeout: 30  # seconds
+  concurrent_plugins: 3
+
+  # User permissions
+  require_admin_for_plugins: false
+  user_can_disable_plugins: true

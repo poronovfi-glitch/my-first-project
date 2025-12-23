@@ -1,0 +1,145 @@
+# AI Models Configuration
+# Настройки моделей OpenAI и Claude для разных задач
+
+models:
+  # OpenAI Models
+  gpt-4o-mini:
+    provider: "openai"
+    name: "GPT-4o Mini"
+    description: "Экономичная модель для большинства задач"
+    max_tokens: 16384
+    supports_vision: true
+    supports_json_mode: true
+    pricing:
+      input: 0.00015  # $ per 1K tokens
+      output: 0.0006  # $ per 1K tokens
+    recommended_for:
+      - "general_chat"
+      - "calendar_management"
+      - "contacts_management"
+      - "quick_questions"
+    use_cases:
+      - "Основное общение"
+      - "Календарь и контакты"
+      - "Быстрые ответы"
+
+  gpt-4o:
+    provider: "openai"
+    name: "GPT-4o"
+    description: "Мощная модель для сложных задач"
+    max_tokens: 128000
+    supports_vision: true
+    supports_json_mode: true
+    pricing:
+      input: 0.0025  # $ per 1K tokens
+      output: 0.010   # $ per 1K tokens
+    recommended_for:
+      - "excel_analysis"
+      - "complex_reasoning"
+      - "image_analysis"
+      - "long_context"
+    use_cases:
+      - "Анализ Excel файлов"
+      - "Сложные расчёты"
+      - "Обработка изображений"
+      - "Длинные документы"
+
+  gpt-4-turbo:
+    provider: "openai"
+    name: "GPT-4 Turbo"
+    description: "Предыдущее поколение, всё ещё мощная модель"
+    max_tokens: 128000
+    supports_vision: true
+    supports_json_mode: true
+    pricing:
+      input: 0.010  # $ per 1K tokens
+      output: 0.030  # $ per 1K tokens
+    recommended_for:
+      - "legacy_support"
+    use_cases:
+      - "Резерв для GPT-4o"
+
+  # Claude Models (Fallback)
+  claude-3-5-sonnet-20241022:
+    provider: "anthropic"
+    name: "Claude 3.5 Sonnet"
+    description: "Резервная модель когда OpenAI недоступен"
+    max_tokens: 200000
+    supports_vision: true
+    supports_json_mode: false
+    pricing:
+      input: 0.003  # $ per 1K tokens
+      output: 0.015  # $ per 1K tokens
+    recommended_for:
+      - "openai_fallback"
+      - "long_context"
+    use_cases:
+      - "Резервный провайдер"
+      - "Очень длинный контекст"
+
+  claude-3-haiku-20240307:
+    provider: "anthropic"
+    name: "Claude 3 Haiku"
+    description: "Быстрая экономичная модель от Anthropic"
+    max_tokens: 200000
+    supports_vision: false
+    supports_json_mode: false
+    pricing:
+      input: 0.00025  # $ per 1K tokens
+      output: 0.00125  # $ per 1K tokens
+    recommended_for:
+      - "budget_fallback"
+    use_cases:
+      - "Экономичный резерв"
+
+# Default model selection strategy
+defaults:
+  # Primary model for general tasks
+  primary: "gpt-4o-mini"
+
+  # Fallback when primary unavailable
+  fallback: "claude-3-5-sonnet-20241022"
+
+  # Model for Excel analysis (needs more power)
+  excel_analysis: "gpt-4o"
+
+  # Model for image analysis
+  image_analysis: "gpt-4o"
+
+  # Model for voice transcription (Whisper)
+  voice_transcription: "whisper-1"
+
+# Feature-specific settings
+features:
+  streaming:
+    enabled: true
+    chunk_size: 512
+
+  retry:
+    max_attempts: 3
+    backoff_factor: 2
+    max_delay: 60
+
+  timeout:
+    default: 60
+    excel_analysis: 120
+    image_analysis: 90
+
+  temperature:
+    default: 0.7
+    code_generation: 0.3
+    creative_writing: 0.9
+    data_analysis: 0.5
+
+# Cost optimization
+cost_optimization:
+  # Switch to cheaper model after budget threshold
+  budget_aware: true
+  high_usage_fallback: "claude-3-haiku-20240307"
+
+  # Compress context when too long
+  context_compression: true
+  max_context_tokens: 8000
+
+  # Cache system prompts (reduce input tokens)
+  prompt_caching: true

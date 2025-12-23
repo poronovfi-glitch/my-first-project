@@ -37,3 +37,38 @@ logs/
 # Temporary files
 *.tmp
 temp/
+
+# Project specific
+# Data directory (database, tokens, cache)
+data/
+!data/.gitkeep
+
+# Sensitive config files
+config/google_credentials.json
+config/*.json
+!config/chat_modes.yml
+!config/models.yml
+!config/plugins.yml
+
+# User uploads
+uploads/
+downloads/
+
+# Credentials & tokens
+*_token.json
+*_credentials.json
+*.pem
+*.key
+
+# Coverage reports
+.coverage
+htmlcov/
+.pytest_cache/
+
+# Type checking
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# Jupyter Notebook
+.ipynb_checkpoints

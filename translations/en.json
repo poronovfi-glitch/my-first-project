@@ -1,0 +1,79 @@
+{
+  "start_message": "👋 Hi! I'm your personal AI assistant.\n\nI can help you with:\n📅 Calendar and events\n👥 Contacts\n📊 Excel file analysis\n🧠 Remember important information\n\nJust tell me what you need!\n\nUse /help to see all commands.",
+
+  "help_message": "🤖 **Available commands:**\n\n**Calendar:**\n/calendar - Show events\n/event - Create event\n/schedule - Show schedule\n\n**Contacts:**\n/contacts - Show contacts\n/addcontact - Add contact\n/findcontact - Find contact\n\n**Excel:**\n/excel - Analyze file\n/analyze - Detailed analysis\n\n**Memory:**\n/remember - Remember\n/forget - Forget\n/memory - Show memory\n\n**Chat modes:**\n/mode - Change mode\n\n**General:**\n/help - This help\n/stats - Usage statistics\n/settings - Settings",
+
+  "error_generic": "😕 An error occurred. Please try again.",
+  "error_no_permission": "⛔ You don't have permission for this command.",
+  "error_rate_limit": "⏱️ Too many requests. Please wait.",
+  "error_budget_exceeded": "💰 Budget exceeded. Contact administrator.",
+  "error_invalid_input": "❌ Invalid format. Please try again.",
+
+  "calendar_created": "✅ Event created:\n📅 {date}\n⏰ {time}\n📝 {title}",
+  "calendar_list": "📅 **Your events:**\n\n{events}",
+  "calendar_no_events": "📅 No scheduled events.",
+  "calendar_deleted": "🗑️ Event deleted.",
+  "calendar_updated": "✅ Event updated.",
+
+  "contact_added": "✅ Contact added:\n👤 {name}\n📱 {phone}\n📧 {email}",
+  "contact_found": "👤 Found contact:\n**{name}**\n📱 {phone}\n📧 {email}",
+  "contact_not_found": "❌ Contact not found.",
+  "contact_updated": "✅ Contact updated.",
+  "contact_deleted": "🗑️ Contact deleted.",
+
+  "excel_analyzing": "📊 Analyzing file...",
+  "excel_result": "📊 **Analysis result:**\n\n{result}",
+  "excel_error_size": "❌ File too large (max {max_size} MB).",
+  "excel_error_format": "❌ Unsupported file format.",
+
+  "memory_stored": "🧠 Remembered!",
+  "memory_forgotten": "🗑️ Forgotten.",
+  "memory_list": "🧠 **What I remember about you:**\n\n{memories}",
+  "memory_empty": "🤷 Nothing remembered yet.",
+
+  "mode_changed": "✅ Mode changed to: {mode}",
+  "mode_list": "🎭 **Available modes:**\n\n{modes}",
+
+  "stats_title": "📊 **Usage statistics:**",
+  "stats_messages": "💬 Messages: {count}",
+  "stats_tokens": "🔢 Tokens used: {tokens}",
+  "stats_cost": "💰 Cost: ${cost:.2f}",
+  "stats_budget": "💳 Budget: ${used:.2f} / ${total:.2f}",
+  "stats_budget_percent": "📊 Used: {percent}%",
+
+  "budget_warning": "⚠️ **Warning!** {percent}% of budget used.\nRemaining: ${remaining:.2f}",
+  "budget_exceeded": "🚫 **Budget exhausted!**\nUsed: ${used:.2f}\nLimit: ${limit:.2f}\n\nContact administrator.",
+
+  "processing": "⏳ Processing...",
+  "thinking": "🤔 Thinking...",
+  "typing": "✍️ Typing...",
+
+  "yes": "Yes",
+  "no": "No",
+  "cancel": "Cancel",
+  "confirm": "Confirm",
+  "back": "Back",
+  "next": "Next",
+  "done": "Done",
+
+  "monday": "Monday",
+  "tuesday": "Tuesday",
+  "wednesday": "Wednesday",
+  "thursday": "Thursday",
+  "friday": "Friday",
+  "saturday": "Saturday",
+  "sunday": "Sunday",
+
+  "january": "January",
+  "february": "February",
+  "march": "March",
+  "april": "April",
+  "may": "May",
+  "june": "June",
+  "july": "July",
+  "august": "August",
+  "september": "September",
+  "october": "October",
+  "november": "November",
+  "december": "December"
+}
